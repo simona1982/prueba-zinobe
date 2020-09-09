@@ -1,0 +1,13 @@
+.btn .btn-secondary,
+.active {
+  background-color: #2196f3 !important;
+  border-color: #2196f3 !important;
+  color: yellow !important;
+}
+
+.btn .btn-secondary,
+.active:hover {
+  background-color: #2196f3 !important;
+  border-color: #2196f3 !important;
+  color: white !important;
+}
