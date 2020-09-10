@@ -6,6 +6,11 @@
       class="validate-form flex-sb flex-w"
     >
       <fieldset>
+        <span
+          *ngIf="usuarioForm.submitted && usuarioForm.controls['nombre'].errors"
+          class="text-danger animated fadeIn"
+          >El nombre es obligatorio</span
+        >
         <div class="form-group">
           <label for="disabledTextInput">Nombre(s)</label>
           <input
@@ -19,6 +24,11 @@
             placeholder="Nombre y apellidos"
           />
         </div>
+        <span
+          *ngIf="usuarioForm.submitted && usuarioForm.controls['email'].errors"
+          class="text-danger animated fadeIn"
+          >El correo es obligatorio</span
+        >
         <div class="form-group">
           <label for="disabledSelect">Correo</label>
           <input
@@ -32,6 +42,11 @@
             placeholder="Email"
           />
         </div>
+        <span
+          *ngIf="usuarioForm.submitted && usuarioForm.controls['cedula'].errors"
+          class="text-danger animated fadeIn"
+          >La Cedula es obligatorio</span
+        >
         <div class="form-group">
           <label for="disabledSelect">Cedula</label>
           <input
@@ -45,37 +60,32 @@
             placeholder="Cedula"
           />
         </div>
-        <!-- <div class="form-group">
+
+        <div class="form-group">
           <label for="disabledSelect">Fecha Pagar</label>
           <input
             type="date"
-            name="bday"
+            name="fechaPagar"
             max="3000-12-31"
             min="1000-01-01"
+            [(ngModel)]="usuario.fechaPagar"
             class="form-control"
           />
         </div>
-        <div class="form-group">
-          <label for="disabledSelect">Cedula</label>
-          <select id="disabledSelect" class="form-control">
-            <option>Disabled select</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="disabledFieldsetCheck"
-              disabled
-            />
-            <label class="form-check-label" for="disabledFieldsetCheck">
-              Can't check this
-            </label>
-          </div>
-        </div> -->
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </fieldset>
     </form>
+  </div>
+
+  <div class="col-md-4">
+    <app-monto-solicitado
+      (enviarMonto)="escuchaMonto($event)"
+    ></app-monto-solicitado>
+    <br /><br />
+    <div class="alert alert-danger" role="alert" *ngIf="errorMonto">
+      Error en el monto {{ monto }} solicitado debe encontrarse en los rangos
+      permitidos
+    </div>
   </div>
 </div>

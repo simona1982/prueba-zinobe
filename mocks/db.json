@@ -1,5 +1,70 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" }
+  "users": [
+    {
+      "id": 14590849,
+      "nombre": "andres velasquez",
+      "correo": "monkey.velasquez.1982@gmail.com",
+      "creditos": [
+        {
+          "id": 1,
+          "valor": 1200,
+          "fechaPagar": "2022-09-27",
+          "estado": "rechazado",
+          "pago": true
+        },
+        {
+          "id": 2,
+          "valor": 1000,
+          "fechaPagar": "2022-09-27",
+          "estado": "aprobado",
+          "pago": false
+        }
+      ]
+    },
+    {
+      "id": 16586892,
+      "nombre": "julian velasquez",
+      "correo": "carjul20@gmail.com",
+      "creditos": [
+        {
+          "id": 1,
+          "valor": 3000,
+          "fechaPagar": "2022-09-27",
+          "estado": "aprobado",
+          "pago": false
+        }
+      ]
+    },
+    {
+      "id": 1130641015,
+      "nombre": "natalia lozano cardona",
+      "correo": "nlozano@gmail.com",
+      "creditos": [
+        {
+          "id": 1,
+          "valor": 1200,
+          "fechaPagar": "2022-09-27",
+          "estado": "rechazado",
+          "pago": true
+        }
+      ]
+    },
+    {
+      "id": "12345666",
+      "nombre": "andrea gutierrez",
+      "correo": "andreaguiterrez@gmail.com",
+      "creditos": [
+        {
+          "id": null,
+          "valor": "20000",
+          "fechaPagar": "2020-09-27",
+          "estado": "aprobado",
+          "pago": false
+        }
+      ]
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

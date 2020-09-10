@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioModel } from './../../models/usuario.model';
+import { JsonServerService } from 'src/app/services/json-server.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-usuario-nuevo',
@@ -9,19 +11,41 @@ import { UsuarioModel } from './../../models/usuario.model';
 })
 export class UsuarioNuevoComponent implements OnInit {
   usuario: UsuarioModel;
+  monto: number;
+  errorMonto: boolean;
 
-  constructor() {}
+  constructor(private jsonserver: JsonServerService) {}
 
   ngOnInit(): void {
     this.usuario = new UsuarioModel();
 
     // Datos de prueba
-    this.usuario.nombre = 'andres velasquez';
-    this.usuario.correo = 'monkey.velasquez.1982@gmail.com';
-    this.usuario.cedula = '14590849';
+    this.usuario.nombre = '';
+    this.usuario.correo = '';
+    this.usuario.cedula = '';
   }
 
   onSubmit(form: NgForm) {
     console.log(`hola submit`);
+    console.log(form);
+    if (form.invalid) {
+      return;
+    }
+
+    if (this.monto >= 10000 && this.monto <= 100000) {
+      this.usuario.valor = this.monto;
+
+      console.log(this.usuario);
+
+      this.jsonserver.solicitudCredito(this.usuario).subscribe((resp) => {
+        console.log(resp);
+      });
+    } else {
+      this.errorMonto = true;
+    }
+  }
+
+  escuchaMonto(valor: number) {
+    this.monto = valor;
   }
 }

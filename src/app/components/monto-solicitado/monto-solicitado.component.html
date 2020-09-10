@@ -1,0 +1,11 @@
+<label for="monto">Monto (Entre vlr. min. 10.000 - vlr. máx. 100.000):</label>
+<input
+  type="number"
+  class="form-control"
+  id="monto"
+  name="monto"
+  min="10000"
+  max="100000"
+  #monto
+  (keyup)="mandarMonto(monto.value)"
+/>

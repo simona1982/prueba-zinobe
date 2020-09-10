@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col">
+    <h3 class="text-primary text-uppercase lead">
+      creditos del usuario {{ usuario | uppercase }}
+    </h3>
+    <table class="table table-hover">
+      <thead class="thead-primary">
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha Pagar</th>
+          <th scope="col">Pagado</th>
+          <th scope="col">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let credito of creditosPorUsuario">
+          <td>{{ credito.id }}</td>
+          <td>{{ credito.estado }}</td>
+          <td>{{ credito.fechaPagar }}</td>
+          <td>{{ credito.pago ? "SI" : "NO" }}</td>
+          <td>{{ credito.valor }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <button (click)="goBack()" type="button" class="btn btn-outline-dark">
+      Atras
+    </button>
+  </div>
+</div>

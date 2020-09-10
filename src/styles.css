@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body {
+  position: relative;
   padding-bottom: 50px;
+  min-height: 100vh;
 }
 
 .main-container {

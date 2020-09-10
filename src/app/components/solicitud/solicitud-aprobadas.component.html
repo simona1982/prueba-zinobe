@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col">
+    <h3 class="text-primary text-uppercase lead">
+      solicitudes aprobadas pendientes x pagar
+    </h3>
+    <table class="table table-hover">
+      <thead class="thead-primary">
+        <tr>
+          <th scope="col">Cedula</th>
+          <th scope="col">Nombre y Apellidos</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Pago credito</th>
+          <th scope="col">Monto Negado</th>
+          <th scope="col">Pagar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let solicitud of solicitudesAprobadasPend">
+          <td>{{ solicitud.cedula }}</td>
+          <td>{{ solicitud.nombre }}</td>
+          <td>
+            <span class="badge badge-pill badge-success">{{
+              solicitud.estado
+            }}</span>
+          </td>
+          <td>{{ solicitud.pago ? "Pagado" : "Pendiente" }}</td>
+          <td>
+            {{ solicitud.monto | currency: "COP ":"symbol-narrow":".0-0" }}
+          </td>
+          <td><button class="btn btn-outline-primary">Pagar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
