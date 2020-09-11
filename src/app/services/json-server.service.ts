@@ -62,4 +62,13 @@ export class JsonServerService {
       })
     );
   }
+
+  solicitudCreditoActualizar(data: object, cedula: number) {
+    return this.http.put(`${this.url}users/${cedula}`, data).pipe(
+      map((resp) => {
+        console.log('entro en el map');
+        return resp;
+      })
+    );
+  }
 }

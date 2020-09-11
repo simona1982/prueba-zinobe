@@ -88,12 +88,32 @@
       creditos!
     </div>
 
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="alertaCreditosPendientesPago"
+    >
+      Usuario existente tiene creditos pendientes por pagar cancelar antes de
+      solicitar nuevos creditos!
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="alertUsuarioCredito">
+      Usuario existente se le acaba de aprobar un nuevo credito felicitaciones!
+    </div>
+
     <br /><br />
 
     <ul class="list-group" *ngIf="alertaCreditosRechazados">
       <li class="list-group-item" *ngFor="let credito of rechazados">
         {{ credito.id }}. credito por valor de {{ credito.valor }} fue
         {{ credito.estado }}
+      </li>
+    </ul>
+
+    <ul class="list-group" *ngIf="alertaCreditosPendientesPago">
+      <li class="list-group-item" *ngFor="let credito of pendientesPago">
+        {{ credito.id }}. credito por valor de {{ credito.valor }} esta
+        pendiente por pagar
       </li>
     </ul>
   </div>

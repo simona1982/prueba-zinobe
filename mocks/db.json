@@ -7,14 +7,14 @@
       "creditos": [
         {
           "id": 1,
-          "valor": 1200,
+          "valor": 12000,
           "fechaPagar": "2022-09-27",
           "estado": "rechazado",
           "pago": true
         },
         {
           "id": 2,
-          "valor": 1000,
+          "valor": 10000,
           "fechaPagar": "2022-09-27",
           "estado": "aprobado",
           "pago": false
@@ -28,7 +28,7 @@
       "creditos": [
         {
           "id": 1,
-          "valor": 3000,
+          "valor": 30000,
           "fechaPagar": "2022-09-27",
           "estado": "aprobado",
           "pago": false
@@ -42,7 +42,7 @@
       "creditos": [
         {
           "id": 1,
-          "valor": 1200,
+          "valor": 12000,
           "fechaPagar": "2022-09-27",
           "estado": "rechazado",
           "pago": true
@@ -58,14 +58,21 @@
           "id": 1,
           "valor": 15200,
           "fechaPagar": "2020-09-11T15:35:51.303Z",
-          "estado": "rechazado",
-          "pago": false
+          "estado": "aprobado",
+          "pago": true
         },
         {
           "id": 2,
           "valor": 15200,
           "fechaPagar": "2020-09-11T15:35:51.303Z",
-          "estado": "rechazado",
+          "estado": "aprobado",
+          "pago": true
+        },
+        {
+          "id": 3,
+          "valor": 32000,
+          "fechaPagar": "2020-09-11T21:01:45.179Z",
+          "estado": "aprobado",
           "pago": false
         }
       ]

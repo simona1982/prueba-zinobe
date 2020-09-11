@@ -13,9 +13,12 @@ export class UsuarioNuevoComponent implements OnInit {
   monto: number;
   errorMonto: boolean;
   alertUsuarioNuevo: boolean = false;
+  alertUsuarioCredito: boolean = false;
   alertaCreditosRechazados: boolean = false;
+  alertaCreditosPendientesPago: boolean = false;
   res = [];
   rechazados = [];
+  pendientesPago = [];
 
   constructor(private jsonserver: JsonServerService) {}
 
@@ -88,10 +91,56 @@ export class UsuarioNuevoComponent implements OnInit {
             return credito.estado == 'rechazado';
           });
 
+          //Creditos Rechazados
           if (rechazados.length > 0) {
             console.log(rechazados.length);
             this.alertaCreditosRechazados = true;
             this.rechazados = rechazados;
+          } else {
+            console.log('buscar pendientes x pagar');
+            const pendientesPagar = creditosUsuario.filter((credito) => {
+              return credito.estado == 'aprobado' && credito.pago == false;
+            });
+
+            console.log(pendientesPagar);
+
+            if (pendientesPagar.length > 0) {
+              this.alertaCreditosPendientesPago = true;
+              this.pendientesPago = pendientesPagar;
+            } else {
+              const noCreditos = creditosUsuario.length + 1;
+              console.log(noCreditos);
+
+              creditosUsuario.push({
+                id: Number(noCreditos),
+                valor: Number(this.usuario.valor),
+                fechaPagar: this.usuario.fechaPagar
+                  ? this.usuario.fechaPagar
+                  : new Date(),
+                estado: 'aprobado',
+                pago: false,
+              });
+
+              const authData = {
+                id: Number(this.usuario.cedula),
+                nombre: this.usuario.nombre,
+                correo: this.usuario.correo,
+                creditos: creditosUsuario,
+              };
+
+              console.log(authData);
+
+              // Guardo solicitud
+              this.jsonserver
+                .solicitudCreditoActualizar(
+                  authData,
+                  Number(this.usuario.cedula)
+                )
+                .subscribe((res) => {
+                  console.log(res);
+                  this.alertUsuarioCredito = true;
+                });
+            }
           }
         }
 
