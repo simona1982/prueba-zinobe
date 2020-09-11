@@ -50,39 +50,14 @@ export class JsonServerService {
     );
   }
 
-  solicitudCredito(usuario: UsuarioModel) {
-    //const estado = Math.random() === 1 ? 'aprobado' : 'rechazado';
-    const estado = 'aprobado';
+  obtenerUsuarios() {
+    return this.listarUsuarios();
+  }
 
-    const authData = {
-      id: usuario.cedula,
-      nombre: usuario.nombre,
-      correo: usuario.correo,
-      creditos: [
-        {
-          id: null,
-          valor: usuario.valor,
-          fechaPagar: usuario.fechaPagar
-            ? usuario.fechaPagar
-            : new Date(usuario.fechaPagar),
-          estado: estado,
-          pago: false,
-        },
-      ],
-    };
-
-    if (estado === 'aprobado') {
-      console.log('aqui');
-      //environment.capital = environment.capital - usuario.valor;
-    }
-
-    console.log(authData);
-
-    // Guardo solicitud
-    return this.http.post(`${this.url}users`, authData).pipe(
+  solicitudCredito(usuario: object) {
+    return this.http.post(`${this.url}users`, usuario).pipe(
       map((resp) => {
         console.log('entro en el map');
-
         return resp;
       })
     );

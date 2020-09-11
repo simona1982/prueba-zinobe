@@ -50,15 +50,22 @@
       ]
     },
     {
-      "id": "12345666",
+      "id": 987654321,
       "nombre": "andrea gutierrez",
       "correo": "andreaguiterrez@gmail.com",
       "creditos": [
         {
-          "id": null,
-          "valor": "20000",
-          "fechaPagar": "2020-09-27",
-          "estado": "aprobado",
+          "id": 1,
+          "valor": 15200,
+          "fechaPagar": "2020-09-11T15:35:51.303Z",
+          "estado": "rechazado",
+          "pago": false
+        },
+        {
+          "id": 2,
+          "valor": 15200,
+          "fechaPagar": "2020-09-11T15:35:51.303Z",
+          "estado": "rechazado",
           "pago": false
         }
       ]

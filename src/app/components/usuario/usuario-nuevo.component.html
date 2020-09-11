@@ -76,6 +76,26 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </fieldset>
     </form>
+    <div class="alert alert-success" role="alert" *ngIf="alertUsuarioNuevo">
+      Usuario nuevo se guardo con exito!
+    </div>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="alertaCreditosRechazados"
+    >
+      Usuario existente tiene creditos rechazados no puede volver a solicitar
+      creditos!
+    </div>
+
+    <br /><br />
+
+    <ul class="list-group" *ngIf="alertaCreditosRechazados">
+      <li class="list-group-item" *ngFor="let credito of rechazados">
+        {{ credito.id }}. credito por valor de {{ credito.valor }} fue
+        {{ credito.estado }}
+      </li>
+    </ul>
   </div>
 
   <div class="col-md-4">
